@@ -6,7 +6,7 @@
     return `
         <div class="text-center mt-5">
             <div style="
-              background-color: ${circle.color};
+              background: ${circle.color};
               border-radius: ${circle.radius}px;
               height: 30px;
               width: 30px;

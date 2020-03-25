@@ -6,7 +6,12 @@
     //       the style "border-radius: 50%"
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(ellipse)}</code>
+            <div style="
+            height: ${ellipse.height}px;
+            width: ${ellipse.width}px;
+            background: ${ellipse.color}
+            ">
+            </div>
         </div>
     `
   }
@@ -44,6 +49,7 @@
     // Array and then put them into the <div id=content> element
 
     // TODO: your code goes here
+    contentElement.innerHTML = ellipsesData.map(ellipse => buildEllipseHTML(ellipse)).join('')
   }
 
   // attach an event handler for button click
