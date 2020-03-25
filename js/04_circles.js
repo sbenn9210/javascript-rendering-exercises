@@ -6,8 +6,10 @@
     return `
         <div class="text-center mt-5">
             <div style="
-              background: ${circle.color};
+              background-color: ${circle.color};
               border-radius: ${circle.radius}px;
+              height: 30px;
+              width: 30px;
             "></div>
         </div>
     `
