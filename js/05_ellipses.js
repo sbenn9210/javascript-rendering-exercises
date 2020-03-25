@@ -9,7 +9,8 @@
             <div style="
             height: ${ellipse.height}px;
             width: ${ellipse.width}px;
-            background: ${ellipse.color}
+            background: ${ellipse.color};
+            border-radius: 50%;
             ">
             </div>
         </div>
