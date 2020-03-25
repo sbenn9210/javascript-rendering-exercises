@@ -5,7 +5,10 @@
     // { background: blue, border-radius: 50%; }
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(circle)}</code>
+            <div style="
+              background: ${circle.color};
+              border-radius: ${circle.radius}px;
+            "></div>
         </div>
     `
   }
@@ -40,7 +43,7 @@
 
     contentElement.innerHTML = `
       <div class="d-flex flex-column align-items-center">
-      ${circlesData.map(buildCircleHTML).join('')}
+      ${circlesData.map(circle => buildCircleHTML(circle)).join('')}
       </div>
       `
   }

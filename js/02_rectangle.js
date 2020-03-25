@@ -3,8 +3,11 @@
   function buildRectangleHTML (rectangle) {
     // TODO: Your code goes here.
     return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(rectangle)}</code>
+        <div class="text-center mt-5" style="
+          width: ${rectangle.width}px;
+          height: ${rectangle.height}px;
+          background-color: ${rectangle.color};
+        ">
         </div>
     `
   }
@@ -20,9 +23,11 @@
   const btnEl = document.getElementById('rectangleBtn')
 
   function clickRectangleBtn () {
+    
     // using the buildRectangleHTML function, create the HTML for the rectangleData
+    let rectangleHTML = buildRectangleHTML(rectangleData)
     // and then put them into the <div id=content> element
-
+    contentElement.innerHTML = rectangleHTML
     // TODO: your code goes here
   }
 
