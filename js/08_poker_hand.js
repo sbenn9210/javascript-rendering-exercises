@@ -6,7 +6,7 @@
     //       directory to render each card in the hand.
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(pokerHand)}</code>
+            <img src=../images/cards/${pokerHand.value + pokerHand.suit}.png>
         </div>
     `
   }
@@ -38,5 +38,16 @@
 
   // Now that we have seen a few examples, try to write your own button click and
   // attach event handler code below.
+
+  let pokerHandBtn = document.getElementById('pokerHandsBtn')
+  let content = document.getElementById('content')
+
+  pokerHandBtn.addEventListener('click', function() {
+    let data = pokerHandData.map(hand => {
+      return buildPokerHandHTML(hand)
+    })
+
+    content.innerHTML = data.join('')
+  })
 
 })()
