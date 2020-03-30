@@ -3,11 +3,38 @@
   function buildSurveyHTML (survey) {
     // TODO: Your code goes here.
     return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(survey)}</code>
-        </div>
+       <div>
+        <h2>${survey.title}</h2>
+        <span>${buildSurveyInputs(survey.fields)}</span>
+        <button class='btn btn-primary render-button mt-1'>${survey.submitButtonText}</button>
+       </div>
     `
   }
+
+  function buildSurveyInputs (fields) {
+    return fields.map(field => {
+      return `
+      <p>${field.label}</p>
+      ${field.options ?  buildSurveyOptions(field.options, field.type) : 
+      `<input type=${field.type}>`
+      }
+      
+      `
+    }).join('')
+  }
+
+  function buildSurveyOptions (options, type) {
+    return options.map(option => {
+      return `
+      <span>
+      <input type=${type}>
+      <label>${option}</label>
+      </span>
+      `
+    }).join('')
+  }
+
+
 
   // here we have four surveys, each represented by a JavaScript Object,
   // all collected into an Array.
@@ -60,4 +87,12 @@
   // Now that we have seen a few examples, try to write your own button click and
   // attach event handler code below.
 
+  let btn = document.getElementById('surveysBtn')
+  let content = document.getElementById('content')
+
+  btn.addEventListener('click', () => {
+    content.innerHTML = surveysData.map(survey => 
+      buildSurveyHTML(survey)
+    ).join('')
+  })
 })()

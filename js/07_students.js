@@ -4,7 +4,14 @@
     // TODO: Your code goes here.
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(student)}</code>
+            <div style="
+              width: 300px;
+              height: 300px;
+              background: red;
+            ">
+            <p>${student.name}</p>
+            <p>${student.isPresent}</p>
+            </div>
         </div>
     `
   }
@@ -36,5 +43,16 @@
 
   // Now that we have seen a few examples, try to write your own button click and
   // attach event handler code below.
+
+  let content = document.getElementById('content')
+  let btn = document.getElementById('studentsBtn')
+
+  btn.addEventListener('click', studentFunction)
+  function studentFunction () {
+    let data = studentsData.map(student => {
+       return buildStudentHTML(student)
+    })
+    content.innerHTML = data.join('')
+  }
 
 })()
