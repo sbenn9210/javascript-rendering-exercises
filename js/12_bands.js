@@ -4,9 +4,33 @@
     // TODO: Your code goes here.
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(band)}</code>
+            <h1>${band.artist}</h1>
+            ${renderAlbums(band.albums).join('')}
         </div>
     `
+  }
+
+  function renderAlbums (albums) {
+    return albums.map(album => {
+      return `
+        <div>
+        <img src=${album.coverArt}
+        <h2>${album.title}</h2>
+        ${renderSongs(album.songs).join('')}
+        </div>
+      `
+    })
+  }
+
+  function renderSongs (songs) {
+    return songs.map(song => {
+      return `
+        <div>
+        <p>${song.title}</p>
+        <p>${song.length}</p>
+        </div>
+      `
+    })
   }
 
   // Some great late 90s, early 2000s albums here ;)
@@ -191,5 +215,14 @@
 
   // Now that we have seen a few examples, try to write your own button click and
   // attach event handler code below.
+
+  let btn = document.getElementById('bandsBtn')
+  let content = document.getElementById('content')
+
+  btn.addEventListener('click', () => {
+    let data = bandsData.map(band => buildBandHTML(band))
+
+    content.innerHTML = data.join('')
+  })
 
 })()
