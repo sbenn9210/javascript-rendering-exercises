@@ -4,7 +4,16 @@
     // TODO: Your code goes here.
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(tweet)}</code>
+            <img src=${tweet.user.profilePic}>
+            <h2>${tweet.user.username}</h2>
+            <h4>${tweet.user.handle}</h4>
+            <span>${tweet.user.isVerified && "*verified*"}</span>
+            <p>${tweet.text}</p>
+            
+            <hr>
+            <p>${tweet.replies}</p>
+            <p>${tweet.retweets}</p>
+            <p>${tweet.likes}</p>
         </div>
     `
   }
@@ -52,5 +61,13 @@
 
   // Now that we have seen a few examples, try to write your own button click and
   // attach event handler code below.
+
+  let content = document.getElementById('content')
+  let btn = document.getElementById('tweetsBtn')
+
+  btn.addEventListener('click', function () {
+     tweetHTML = tweetsData.map(tweet => buildTweetHTML(tweet))
+      content.innerHTML = tweetHTML.join('')
+  })
 
 })()
